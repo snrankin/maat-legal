@@ -1,0 +1,112 @@
+{
+    "project": {
+        "name": "Maat Legal",
+        "slug": "maat",
+        "env": "dev"
+    },
+    "browsers": [
+        "last 2 version",
+        "> 1%",
+        "ie >= 9",
+        "ie_mob >= 10",
+        "ff >= 30",
+        "chrome >= 34",
+        "safari >= 7",
+        "opera >= 23",
+        "ios >= 7",
+        "android >= 4",
+        "bb >= 10"
+    ],
+    "paths": {
+        "fonts": "assets/fonts",
+        "styles": "assets/css",
+        "scripts": "assets/js",
+        "images": "assets/imgs",
+        "sass": "assets/sass"
+    },
+    "main": {
+        "sass": {
+            "src": "assets/sass/main.scss",
+            "watch": [
+                "assets/sass/**/*.scss",
+                "inc/components/**/*.scss",
+                "!inc/components/admin/**/*.scss",
+                "!**/__kebabCase_name__.scss"
+            ],
+            "dest": "assets/css/src"
+        },
+        "css": {
+            "src": ["assets/css/src/**/*.css"],
+            "watch": [],
+            "name": "main",
+            "dest": "assets/css"
+        },
+        "js": {
+            "src": [
+                "assets/js/src/global.js",
+                "inc/components/**/assets/js/*.js",
+                "!inc/components/admin/assets/js/admin.js"
+            ],
+            "watch": [
+                "inc/components/**/assets/js/*.js",
+                "assets/js/src/global.js"
+            ],
+            "dest": "assets/js",
+            "name": "main"
+        },
+        "imgs": {
+            "src": ["**/imgs/src/*", "assets/imgs/src/*", "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/scss/img/**/*", "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/src/img/**/*", "!node_modules/**/*"],
+            "dest": "assets/imgs"
+        }
+    },
+    "vendor": {
+        "sass": {},
+        "css": {
+            "src": [
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/css/jquery.fancybox.css",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/dist/assets/owl.carousel.css"
+            ],
+            "watch": "assets/css/vendor/*.css",
+            "dest": "assets/css",
+            "name": "vendor"
+        },
+        "js": {
+            "src": [
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bootstrap/dist/js/bootstrap.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/js/jquery.fancybox.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/dist/owl.carousel.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/sticky-kit/dist/sticky-kit.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/waypoints/lib/jquery.waypoints.js"
+            ],
+            "watch": ["assets/js/vendor/*.js"],
+            "dest": "assets/js",
+            "name": "vendor"
+        },
+        "assets": {
+            "src": [
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/scss/img",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/src/img"
+            ]
+        }
+    },
+    "admin": {
+        "sass": {
+            "src": "inc/components/admin/assets/sass/admin.scss",
+            "watch": "inc/components/admin/assets/sass/**/*.scss",
+            "dest": "assets/css/src"
+        },
+        "css": {
+            "src": ["assets/css/src/admin.css"],
+            "watch": [],
+            "dest": "assets/css",
+            "name": "admin"
+        },
+        "js": {
+            "src": "inc/components/admin/assets/js/admin.js",
+            "watch": "inc/components/admin/assets/js/admin.js",
+            "dest": "assets/js",
+            "name": "admin"
+        }
+    }
+}

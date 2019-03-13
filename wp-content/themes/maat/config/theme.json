@@ -1,0 +1,15 @@
+{
+    "colors": {
+        "primary": "#3C1053",
+        "secondary": "#3C1053",
+        "tertiary": "#25282A",
+        "success": "#4d7d5c",
+        "danger": "#E53D00",
+        "warning": "#F6BE00",
+        "info": "#E7CEB5",
+        "light": "#EFF1F4",
+        "dark": "#25282A",
+        "white": "#FFFFFF",
+        "black": "#000000"
+    }
+}

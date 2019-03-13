@@ -3,8 +3,7 @@
  * Sample implementation of the Custom Header feature
  *
  * You can add an optional custom header image to header.php like so ...
- *
-	<?php the_header_image_tag(); ?>
+ * <?php the_header_image_tag(); ?>
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
@@ -46,12 +45,9 @@ if ( ! function_exists( 'maat_header_style' ) ) :
 		}
 
 		// If we get this far, we have custom styles. Let's do this.
-		?>
-		<style type="text/css">
-		<?php
-		// Has the text been hidden?
-		if ( ! display_header_text() ) :
-			?>
+		echo '<style type="text/css">';
+		/* Has the text been hidden? */
+		if ( ! display_header_text() ) : ?>
 			.site-title,
 			.site-description {
 				position: absolute;
@@ -65,8 +61,7 @@ if ( ! function_exists( 'maat_header_style' ) ) :
 			.site-description {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
-		<?php endif; ?>
-		</style>
-		<?php
+		<?php endif;
+		echo '</style>';
 	}
 endif;

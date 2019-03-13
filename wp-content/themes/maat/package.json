@@ -1,0 +1,85 @@
+{
+    "name": "maat",
+    "version": "1.0.0",
+    "description": "Custom Wordpress theme based on Bootstrap 4 and advanced custom fields",
+    "main": "index.js",
+    "scripts": {
+        "test": "maat test"
+    },
+    "keywords": [
+        "wordpress",
+        "bootstrap4",
+        "acf",
+        "responsive",
+        "underscores",
+        "gulp"
+    ],
+    "author": {
+        "name": "Maat Legal",
+        "email": "dev@maatlegal.com"
+    },
+    "license": "GPL-3.0",
+    "devDependencies": {
+        "@babel/core": "latest",
+        "@babel/preset-env": "latest",
+        "autoprefixer": "latest",
+        "babel-core": "latest",
+        "babel-polyfill": "latest",
+        "babel-preset-env": "latest",
+        "browser-sync": "latest",
+        "css-mqpacker": "latest",
+        "fancy-log": "latest",
+        "gulp": "latest",
+        "gulp-babel": "latest",
+        "gulp-cache-bust": "latest",
+        "gulp-clean-css": "latest",
+        "gulp-concat": "latest",
+        "gulp-debug": "latest",
+        "gulp-env": "latest",
+        "gulp-filter": "latest",
+        "gulp-hub": "^4.2.0",
+        "gulp-imagemin": "latest",
+        "gulp-jshint": "latest",
+        "gulp-line-ending-corrector": "latest",
+        "gulp-newer": "latest",
+        "gulp-notify": "latest",
+        "gulp-plumber": "latest",
+        "gulp-postcss": "latest",
+        "gulp-print": "latest",
+        "gulp-rename": "latest",
+        "gulp-rev": "latest",
+        "gulp-rev-rewrite": "latest",
+        "gulp-sass": "latest",
+        "gulp-sass-glob": "latest",
+        "gulp-sourcemaps": "latest",
+        "gulp-strip-comments": "latest",
+        "gulp-uglify": "latest",
+        "gulp-watch": "latest",
+        "jshint": "latest",
+        "jshint-stylish": "latest",
+        "npm": "latest",
+        "postcss-aspect-ratio": "latest",
+        "postcss-assets": "latest",
+        "postcss-discard-duplicates": "latest",
+        "postcss-easings": "latest",
+        "postcss-focus": "latest",
+        "postcss-inline-svg": "latest",
+        "postcss-momentum-scrolling": "latest",
+        "vinyl-ftp": "^0.6.1"
+    },
+    "dependencies": {
+        "ajv": "latest",
+        "dotenv": "latest"
+    },
+    "jshintConfig": {
+        "undef": true,
+        "unused": true,
+        "globals": {
+            "jQuery": true,
+            "google": true,
+            "window": true,
+            "document": true,
+            "console": true
+        }
+    }
+}
