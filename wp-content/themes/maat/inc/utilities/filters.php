@@ -5,7 +5,7 @@ function maat_acf_settings_path($path)
 {
 
     // update path
-    $path = INCLUDES_PATH . '/acf/';
+    $path = INCLUDES_PATH . '/plugins/acf/';
 
     // return
     return $path;
@@ -15,7 +15,7 @@ add_filter('acf/settings/path', 'maat_acf_settings_path');
 function maat_acf_settings_dir($dir)
 {
     // update path
-    $dir = INCLUDES_PATH_URI . '/acf/';
+    $dir = INCLUDES_PATH_URI . '/plugins/acf/';
 
     // return
     return $dir;

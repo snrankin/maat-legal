@@ -26,6 +26,13 @@ require UTILITIES_PATH . '/template-tags.php';
 require UTILITIES_PATH . '/customizer.php';
 
 /**
+ * Add Advanced Custom Fields Plugin
+ *
+ * @link https://www.advancedcustomfields.com/resources/including-acf-in-a-plugin-theme/
+ */
+include_once(INCLUDES_PATH . '/plugins/acf/acf.php');
+
+/**
  * Load Jetpack compatibility file.
  */
 if (defined('JETPACK__VERSION')) {

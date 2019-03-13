@@ -83,12 +83,6 @@ if (!function_exists('maat_setup')) :
         add_theme_support('editor-styles');
         add_theme_support('responsive-embeds');
 
-        /**
-		 * Add Advanced Custom Fields Plugin
-		 *
-		 * @link https://www.advancedcustomfields.com/resources/including-acf-in-a-plugin-theme/
-		 */
-        include_once(INCLUDES_PATH . '/plugins/acf/acf.php');
 
         /**
 		 * Load desired components into theme
