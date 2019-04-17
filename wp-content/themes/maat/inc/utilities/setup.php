@@ -1,7 +1,23 @@
 <?php
+
+/** ===========================================================================
+ * Sets up theme defaults and registers support for various WordPress features.
+ * @package Maat Legal Theme
+ * @version 0.9.0
+ * -----
+ * @author Sam Rankin (sam@maatlegal.com>)
+ * @copyright Copyright (c) 2019 Maat Legal
+ * -----
+ * Created Date: 3-4-19
+ * Last Modified: 4-12-19 at 5:03 pm
+ * Modified By: Sam Rankin <sam@maatlegal.com>
+ * -----
+ * HISTORY:
+ * Date    	By	Comments
+ * --------	--	--------------------------------------------------------------
+* ========================================================================= */
+
 /**
-	* Sets up theme defaults and registers support for various WordPress features.
-	*
 	* Note that this function is hooked into the after_setup_theme hook, which
 	* runs before the init hook. The init hook is too late for some features, such
 	* as indicating support for post thumbnails.
@@ -11,7 +27,7 @@ if (!function_exists('maat_setup')) :
 
     function maat_setup()
     {
-        /*
+        /**
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on Maat, use a find and replace
@@ -19,10 +35,12 @@ if (!function_exists('maat_setup')) :
 		 */
         load_theme_textdomain('maat', get_template_directory() . '/languages');
 
-        // Add default posts and comments RSS feed links to head.
+        /**
+         * Add default posts and comments RSS feed links to head.
+         */
         add_theme_support('automatic-feed-links');
 
-        /*
+        /**
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
 		 * hard-coded <title> tag in the document head, and expect WordPress to
@@ -30,19 +48,22 @@ if (!function_exists('maat_setup')) :
 		 */
         add_theme_support('title-tag');
 
-        /*
+        /**
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
         add_theme_support('post-thumbnails');
-
-        // This theme uses wp_nav_menu() in one location.
+/**
+		 * Register Main Menu
+		 *
+		 * @link https://codex.wordpress.org/Function_Reference/register_nav_menus
+		 */
         register_nav_menus(array(
             'main-menu' => esc_html__('Primary', 'maat'),
         ));
 
-        /*
+        /**
 		 * Switch default core markup for search form, comment form, and comments
 		 * to output valid HTML5.
 		 */
@@ -53,14 +74,16 @@ if (!function_exists('maat_setup')) :
             'gallery',
             'caption',
         ));
-
-        // Set up the WordPress core custom background feature.
+        /**
+         * Set up the WordPress core custom background feature.
+         */
         add_theme_support('custom-background', apply_filters('maat_custom_background_args', array(
             'default-color' => 'ffffff',
             'default-image' => '',
         )));
-
-        // Add theme support for selective refresh for widgets.
+        /**
+         * Add theme support for selective refresh for widgets.
+         */
         add_theme_support('customize-selective-refresh-widgets');
 
         /**
@@ -82,28 +105,18 @@ if (!function_exists('maat_setup')) :
         add_theme_support('align-wide');
         add_theme_support('editor-styles');
         add_theme_support('responsive-embeds');
-
+        add_theme_support('disable-custom-font-sizes');
 
         /**
 		 * Load desired components into theme
-		 *
-		 * @uses get_component_setup();
 		 */
-        $components = array(
-            'Admin',
-            'Blog',
-            'Error 404',
-            'Landing Page',
-            'Footer',
-            'Site Header',
-            'Schema',
-            'Search',
-            'Social'
-        );
+        $components = glob(COMPONENT_PATH . '/*', GLOB_ONLYDIR);
 
         foreach ($components as $component) {
-            $key = sanitize_title_with_dashes($component);
-            get_component_setup($key);
+            $path = $component . '/setup.php';
+            if (file_exists($path)) {
+                include_once($path);
+            }
         }
 
         /**
@@ -111,31 +124,57 @@ if (!function_exists('maat_setup')) :
 		 *
 		 * @link https://developer.wordpress.org/reference/functions/add_image_size/
 		 */
+        remove_image_size('medium_large');
         add_image_size('admin-thumb', 60, 60, true);
+        update_option( 'thumbnail_size_w', 320 );
+        update_option( 'thumbnail_crop', 0 );
+        add_image_size('medium_sm', 576, 576);
+        update_option( 'medium_size_w', 768);
+        add_image_size('medium_lg', 1024, 1024);
+        update_option( 'large_size_w', 1280);
+        add_image_size('large_lg', 1440, 1440);
+        function my_custom_sizes( $sizes ) {
+            return array_merge( $sizes, array(
+                'admin-thumb' => __( 'Admin Thumbnail' ),
+                'medium_sm' => __( 'Large Phone (576px)' ),
+                'medium_lg' => __( 'Tablet Landscape (1024px)' ),
+                'large_lg' => __( 'Large Desktop (1440px)' ),
+            ) );
+        }
+
+        /**
+         * Include Admin Customizations
+         */
+        require ADMIN_PATH . '/setup.php';
+
+        /**
+         * Include Required Plugins
+         */
+        require PLUGINS_PATH . '/setup.php';
     }
 endif;
 add_action('after_setup_theme', 'maat_setup');
 
-function maat_setup_theme_supported_features()
-{
-    $theme_settings = get_stylesheet_directory_uri() . '/config/theme.json';
-    if (file_exists($theme_settings)) {
-        $json = json_decode($theme_settings, true);
-        $colors = $json['colors'];
-        $theme_colors = array();
-        foreach ($colors as $name => $value) {
-            $theme_color = array(
-                'name' => __($name, 'maat'),
-                'slug' => $name,
-                'color' => $value,
-            );
-            $theme_colors[] = $theme_color;
-        }
-        add_theme_support('editor-color-palette', $theme_colors);
-    }
-}
+// function maat_setup_theme_supported_features()
+// {
+//     $theme_settings = CONFIG_PATH . '/theme.json';
+//     if (file_exists($theme_settings)) {
+//         $json = json_decode($theme_settings, true);
+//         $colors = $json['colors'];
+//         $theme_colors = array();
+//         foreach ($colors as $name => $value) {
+//             $theme_color = array(
+//                 'name' => __($name, 'maat'),
+//                 'slug' => $name,
+//                 'color' => $value,
+//             );
+//             $theme_colors[] = $theme_color;
+//         }
+//         add_theme_support('editor-color-palette', $theme_colors);
+//     }
+// }
 
-add_action('after_setup_theme', 'maat_setup_theme_supported_features');
+// add_action('after_setup_theme', 'maat_setup_theme_supported_features');
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -160,11 +199,11 @@ add_action('after_setup_theme', 'maat_content_width', 0);
  */
 function maat_add_favicon()
 {
-    $favicon_folder = ASSETS_PATH . '/imgs/favicons';
-    $favicons = ASSETS_PATH_URI . '/imgs/favicons';
+    $favicon_folder = ASSETS_PATH . '/imgs';
+    $favicons = ASSETS_PATH_URI . '/imgs';
     if (file_exists($favicon_folder)) {
         $output = "";
-        $output .= '<link rel="apple-touch-icon" sizes="180x180" href="' . $favicons . '/apple-touch-icon.png">' . PHP_EOL;
+        $output .= "\t" . "<link rel='apple-touch-icon' sizes='180x180' href='" . $favicons . "'/apple-touch-icon.png'>" . PHP_EOL;
         $output .= "\t" . '<link rel="icon" type="image/png" sizes="192x192" href="' . $favicons . '/android-chrome-192x192.png">' . PHP_EOL;
         $output .= "\t" . '<link rel="icon" type="image/png" sizes="32x32" href="' . $favicons . '/favicon-32x32.png">' . PHP_EOL;
         $output .= "\t" . '<link rel="icon" type="image/png" sizes="16x16" href="' . $favicons . '/favicon-16x16.png">' . PHP_EOL;
@@ -212,4 +251,3 @@ function maat_add_adminbar_styles()
         echo $output;
     }
 }
-//add_action('wp_head', 'maat_add_adminbar_styles');

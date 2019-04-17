@@ -10,37 +10,58 @@ $social-colors: (
 
 .social-list {
     display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
+    overflow: hidden;
     .social-list-inner {
-        margin: 0 -0.5rem -0.5rem 0;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+        @include grid-spacing(
+            'margin-right' 'margin-left' 'width',
+            $neg: true,
+            $spacing: $gutters-33
+        );
+        @include grid-spacing(
+            'margin-bottom',
+            $neg: true,
+            $spacing: $gutters-67
+        );
     }
     .social-list-item {
-        margin: 0 0.5rem 0.5rem 0;
-        font-size: 1.3rem;
+        @include grid-spacing(
+            'padding-left' 'padding-right',
+            $spacing: $gutters-33
+        );
+        @include grid-spacing('margin-bottom', $spacing: $gutters-67);
         @each $profile, $color in $social-colors {
-            &.#{$profile} a {
+            &.#{$profile} a:hover i {
                 background-color: $color;
             }
         }
         a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: block;
+            position: relative;
             line-height: 1;
-            width: rem(35px);
-            height: rem(35px);
-            border-radius: 100%;
-            font-size: 1.3rem;
-            &:hover {
+            font-size: ms(2);
+            @include plain-hover-focus {
                 text-decoration: none;
+                color: #fff;
             }
             i {
+                display: block;
                 text-align: center;
                 color: #fff;
-                font-size: 1rem;
+                transition: $transition-base;
+                font-size: ms(2);
+                width: ms(2);
+                height: ms(2);
+                border-radius: 100%;
+                &::before {
+                    display: block;
+                    transform: translateY(3.5%);
+                }
             }
         }
     }

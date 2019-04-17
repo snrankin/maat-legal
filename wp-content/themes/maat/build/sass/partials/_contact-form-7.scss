@@ -1,0 +1,97 @@
+// ========================================================================= //
+// Component: _contact-form-7.scss
+// Project: maat
+// Created Date: 3-21-19
+// Author: Sam Rankin (sam@maatlegal.com>)
+// -----
+// Last Modified: 4-15-19 at 11:59 am
+// Modified By: Sam Rankin <sam@maatlegal.com>
+// -----
+// Copyright (c) 2019 Maat Legal
+// -----
+// HISTORY:
+// Date      	By	Comments
+// ----------	---	----------------------------------------------------------
+// ========================================================================= //
+
+.wpcf7 {
+    width: 100%;
+    overflow: hidden;
+    @include grid-spacing('margin-bottom', $spacing: $gutters-200);
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .col-item {
+        position: relative;
+    }
+
+    .mc4wp-checkbox {
+        display: block;
+        > label {
+            display: block;
+            margin-bottom: 0;
+            input {
+                @extend .custom-control-input !optional;
+            }
+
+            span {
+                @extend .custom-control-label !optional;
+
+                display: block;
+                color: #fff;
+                white-space: nowrap;
+            }
+        }
+    }
+    .help-block {
+        @extend .form-text !optional;
+        @extend .small !optional;
+    }
+    .wpcf7-response-output {
+        margin-bottom: 0;
+        margin-top: ms(1);
+    }
+    .form-group.has-error {
+        input {
+            @extend .form-control.is-invalid !optional;
+        }
+    }
+}
+
+div.wpcf7 {
+    .ajax-loader {
+        position: absolute;
+        top: 50%;
+        right: -0.67rem;
+        margin: 0;
+        padding: 0;
+        display: block;
+        transform: translate(100%, -50%);
+        background-image: none !important;
+        width: #{($input-line-height * 1rem) * 0.67};
+        height: #{($input-line-height * 1rem) * 0.67};
+        &::after {
+            content: '';
+            display: block;
+            border-radius: 50%;
+            width: #{($input-line-height * 1rem) * 0.67};
+            height: #{($input-line-height * 1rem) * 0.67};
+            border-top: 0.33rem solid rgba($dark, 0.2);
+            border-right: 0.33rem solid rgba($dark, 0.2);
+            border-bottom: 0.33rem solid rgba($dark, 0.2);
+            border-left: 0.33rem solid $dark;
+            animation: load8 1.1s infinite linear;
+        }
+    }
+}
+
+@keyframes load8 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

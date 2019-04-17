@@ -54,152 +54,67 @@ function get_component_partial($component, $partial)
     *
     * @param string $component Name of folder where the partial is located.
     * (subfolder of components)
-    * @param string $partial Name of file to load.
     * @uses include_once()
 */
 function include_component_partial($component, $partial)
 {
-    $component = item_title($component);
-    $path = COMPONENT_PATH_URI . '/' . $component . '/partials/' . $partial . '.php';
+    $path = COMPONENT_PATH . '/' . $component . '/partials/' . $partial . '.php';
     if (file_exists($path)) {
         include_once($path);
     }
 }
+
 /**
-    * Include component setup file
-    *
-    * Includes the setup file from a specific compontent. The component must be
-    * located in the components folder
-    *
-    * @param string $component Name of folder where the partial is located.
-    * (subfolder of components)
-    * @param string $partial Name of file to load.
-    * @uses get_template_part()
-*/
-function get_component_setup($component)
-{
-    $component = item_title($component);
-    $path = COMPONENT_PATH_URI . '/' . $component . '/setup.php';
-    if (file_exists($path)) {
-        include_once($path);
-    }
-}
-
-function bg_color_list()
-{
-    $bg_colors = array(
-        'primary' => 'Primary Color',
-        'secondary' => 'Secondary Color',
-        'success' => 'Success Color',
-        'danger' => 'Danger Color',
-        'warning' => 'Warning Color',
-        'info' => 'Info Color',
-        'light' => 'Light Color',
-        'dark' => 'Dark Color',
-        'white' => 'White Color',
-        'transparent' => 'Transparent',
-        'custom' => 'Custom Color',
-    );
-    return $bg_colors;
-}
-
-function bootstrap_bg_colors()
-{
-    $colors = array(
-        'bg-primary' => 'Primary',
-        'bg-secondary' => 'Secondary',
-        'bg-success' => 'Success',
-        'bg-danger' => 'Danger',
-        'bg-warning' => 'Warning',
-        'bg-info' => 'Info',
-        'bg-light' => 'Light',
-        'bg-dark' => 'Dark',
-        'bg-transparent' => 'Transparent',
-        'bg-white' => 'White',
-        'bg-custom' => 'Custom',
-    );
-    return $colors;
-}
-
-function bg_color_choices($field)
-{
-    global $settings;
-    $theme_colors = $settings['colors'];
-    $custom_colors = $theme_colors['custom_colors'];
-
-    $colors = array(
-        'bg-primary' => 'Primary',
-        'bg-secondary' => 'Secondary',
-        'bg-success' => 'Success',
-        'bg-danger' => 'Danger',
-        'bg-warning' => 'Warning',
-        'bg-info' => 'Info',
-        'bg-light' => 'Light',
-        'bg-dark' => 'Dark',
-        'bg-transparent' => 'Transparent',
-        'bg-white' => 'White',
-    );
-
-    if ($custom_colors) {
-        foreach ($custom_colors as $color) {
-            $color_name = $color['color_name'];
-            $css_name = sanitize_html_class($color_name);
-            $custom_color = $color['custom_color'];
-            $colors += ['bg-' . $css_name => $color_name];
-        }
-    }
-
-    $field['choices'] = $colors;
-    return $field;
-}
-add_filter('acf/load_field/name=background_color', 'bg_color_choices');
-
-function bootstrap_txt_colors()
-{
-    $colors = array(
-        'text-primary' => 'Primary',
-        'text-secondary' => 'Secondary',
-        'text-success' => 'Success',
-        'text-danger' => 'Danger',
-        'text-warning' => 'Warning',
-        'text-info' => 'Info',
-        'text-light' => 'Light',
-        'text-dark' => 'Dark',
-        'text-body' => 'Body',
-        'text-white' => 'White',
-        'text-white-50' => 'White 50',
-        'text-black-50' => 'Black 50',
-        'text-custom' => 'Custom',
-    );
-    return $colors;
-}
-
-function add_item_classes($classes = array())
+ * Add html markup for classes from array
+ *
+ * @param array $classes
+ *
+ * @return string
+ */
+function maat_add_item_classes($classes = array())
 {
     $class_list = 'class="';
 
     $all_classes = '';
-    foreach ($classes as $class) {
-        if (!empty($class)) {
+    if (!empty($classes)) {
+        foreach ($classes as $class) {
             $all_classes .= sanitize_html_class($class) . ' ';
         }
+        $class_list .= trim($all_classes) . '"';
+        return $class_list;
+    } else{
+        return '';
     }
-    $class_list .= trim($all_classes) . '"';
-    return $class_list;
-}
 
-function add_item_styles($styles = array())
+}
+/**
+ * Add html markup for inline styles from array
+ *
+ * @param array $styles
+ *
+ * @return string
+ */
+
+function maat_add_item_styles($styles = array())
 {
     $styles_list = ' style="';
 
     $all_styles = '';
-    foreach ($styles as $property => $value) {
-        if (!empty($value)) {
-            $all_styles .= $property . ': ' . $value . '; ';
+    if (!empty($styles)) {
+        foreach ($styles as $property => $value) {
+            if($property === 'background-image'){
+                $all_styles .= $property . ': url(' . $value . '); ';
+            } else {
+                $all_styles .= $property . ': ' . $value . '; ';
+            }
         }
+        $styles_list .= trim($all_styles) . '"';
+        return $styles_list;
     }
-    $styles_list .= trim($all_styles) . '"';
-    return $styles_list;
+     else{
+        return '';
+    }
+
 }
 
 function add_item_data($data = array())

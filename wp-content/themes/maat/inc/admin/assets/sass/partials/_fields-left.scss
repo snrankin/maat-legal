@@ -1,0 +1,21 @@
+.postbox.acf-postbox .acf-fields.-left {
+    flex-direction: column;
+    > .acf-field {
+        padding      : 0 !important;
+        width        : 100%;
+        flex         : 1 1 100%;
+        display      : flex;
+        border-bottom: #EEE solid 1px;
+        &:last-child{
+            border-bottom: none;
+        }
+        >.acf-label {
+            padding: 15px;
+            float  : none;
+        }
+        > .acf-input{
+            padding: 15px;
+            float  : none;
+        }
+    }
+}

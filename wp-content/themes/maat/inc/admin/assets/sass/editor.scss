@@ -1,0 +1,80 @@
+// ========================================================================= //
+// File: /inc/admin/assets/sass/editor.scss
+// Project: Maat Legal Theme
+// -----
+// Author: Sam Rankin (sam@maatlegal.com>)
+// Copyright (c) 2019 Maat Legal
+// -----
+// Created Date: 4-12-19
+// Last Modified: 4-12-19 at 1:58 pm
+// Modified By: Sam Rankin <sam@maatlegal.com>
+// -----
+// HISTORY:
+// Date    	By	Comments
+// --------	--	--------------------------------------------------------------
+// ========================================================================= //
+
+@import '/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/mathsass/dist/_math';
+@import '/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/modularscale-sass/stylesheets/modularscale';
+@import '../../../../build/sass/functions';
+@import '../../../../build/sass/variables';
+@import '/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bootstrap/scss/mixins';
+@import '/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bootstrap/scss/utilities/text';
+@import '/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bootstrap/scss/utilities/display';
+@import 'partials/type';
+
+@font-face {
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    src: local('Helvetica Neue Light Italic'), local(HelveticaNeue-LightItalic),
+        local('Helvetica Light Oblique'), local(Helvetica-LightOblique);
+}
+
+@font-face {
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    src: local('Helvetica Neue Italic'), local(HelveticaNeue-Italic),
+        local('Helvetica Oblique'), local(Helvetica-Oblique);
+}
+
+@font-face {
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    src: local('Helvetica Neue Bold Italic'), local(HelveticaNeue-BoldItalic),
+        local('Helvetica Bold Oblique'), local(Helvetica-BoldOblique);
+}
+
+@font-face {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    src: local('Helvetica Neue Light'), local(HelveticaNeue-Light),
+        local('Helvetica Light'), local(Helvetica-Light);
+}
+
+@font-face {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    src: local(HelveticaNeue), local(Helvetica);
+}
+
+@font-face {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    src: local('Helvetica Neue Bold'), local(HelveticaNeue-Bold),
+        local('Helvetica Bold'), local(Helvetica-Bold);
+}
+
+html,
+body {
+    font-family: sans-serif !important;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smoothing: antialiased !important;
+}

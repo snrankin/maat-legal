@@ -1,44 +1,71 @@
 <?php
-
-function getLocationInfo($location = '')
-{
+/**
+ * Function to get Schema Information
+ *
+ * @return array
+ */
+function getLocationInfo(){
     $location_info = array();
-    $address = get_field('location_address', $location);
-    $phone = get_field('location_phone', $location);
-    $fax = get_field('location_fax', $location);
-    $email = get_field('location_email', $location);
-    $map_url = get_field('location_map_url', $location);
-    $hob = get_field('location_hob', $location);
-    $social_profiles = get_field('location_social_profiles', $location);
+    $phone = get_field('phone', 'options');
+    $fax = get_field('fax', 'options');
+    $email = get_field('email', 'options');
 
-    if (!empty($address)) {
-        $street = $address['street'];
-        $unit = $address['unit'];
-        $city = $address['city'];
-        $state = $address['state'];
-        $zip = $address['zip'];
-        $lat = $address['latitude'];
-        $lng = $address['longitude'];
-        $full_address = '';
-        $full_address .= (!empty($street)) ? $street : '';
-        $full_address .= (!empty($unit)) ? ' ' . $unit . ',' : '';
-        $full_address .= (!empty($city)) ? ' ' . $city . ',' : '';
-        $full_address .= (!empty($state)) ? $state : '';
-        $full_address .= (!empty($zip)) ? $zip : '';
-        $location_address = array(
-            'full' => $full_address,
-            'street' => $street,
-            'unit' => $unit,
-            'city' => $city,
-            'state' => $state,
-            'zip' => $zip,
-            'lat' => $lat,
-            'lng' => $lng,
-        );
-        if (!empty($map_url)) {
-            $location_address['map_url'] = $map_url;
+    if( have_rows('company_locations', 'options') ) {
+        $all_locations = array();
+        while( have_rows('company_locations', 'options') ){
+            the_row();
+                $loc_info       = array();
+                $location       = get_sub_field('location');
+                $title          = $location['location_label'];
+                $full_address   = '';
+
+                if(isset($location['street_address']))       {
+                    $loc_info['street'] = $location['street_address'];
+                    $full_address .= $location['street_address'];
+                }
+                if(isset($location['unit']))       {
+                    $loc_info['unit'] = $location['unit'];
+                    $full_address .= $location['unit'];
+                }
+                if(isset($location['city']))       {
+                    $loc_info['city'] = $location['city'];
+                    $full_address .= ', ' . $location['city'];
+                }
+                if(isset($location['state']))       {
+                    $loc_info['state'] = $location['state'];
+                    $full_address .= ', ' . $location['state'];
+                }
+                if(isset($location['zip']))       {
+                    $loc_info['zip'] = $location['zip'];
+                    $full_address .= $location['zip'];
+                }
+                if(isset($location['latitude']))       {
+                    $loc_info['lat'] = $location['latitude'];
+                }
+
+                if(isset($location['longitude']))       {
+                    $loc_info['lng'] = $location['longitude'];
+                }
+
+                if(isset($location['map_url']))       {
+                    $loc_info['map_url'] = $location['map_url'];
+                }
+
+                if(isset($location['email']))       {
+                    $loc_info['email'] = $location['email'];
+                }
+
+                if(isset($location['phone']))       {
+                    $loc_info['phone'] = $location['phone'];
+                }
+
+                if(!empty($full_address)) {
+                    $loc_info['full_address'] = $full_address;
+                }
+
+                $all_locations[$title] = $loc_info;
         }
-        $location_info['address'] = $location_address;
+        $location_info['locations'] = $all_locations;
     }
     if (!empty($phone)) {
         $location_info['phone'] = $phone;
@@ -49,14 +76,20 @@ function getLocationInfo($location = '')
     if (!empty($fax)) {
         $location_info['fax'] = $fax;
     }
-    if (!empty($hob)) {
-        $location_info['hob'] = $hob;
-    }
+    // if (!empty($hob)) {
+    //     $location_info['hob'] = $hob;
+    // }
     return $location_info;
 }
 
-function displayLocationInfo($args = array())
-{
+/**
+ * Function to display html markup for company info
+ *
+ * @param array $args
+ *
+ * @return string
+ */
+function displayLocationInfo($args = array()){
 
     $defaults = array(
         'wrapper' => '',

@@ -1,0 +1,35 @@
+#winning .content {
+    max-width: 100vw
+}
+
+@media (min-width:576px) {
+    #winning .content {
+        max-width: 90vw
+    }
+}
+
+@media (min-width:768px) {
+    #winning .content {
+        max-width: 85vw
+    }
+}
+
+@media (min-width:1024px) {
+    #winning .content {
+        max-width: 80vw
+    }
+}
+
+@media (min-width:1280px) {
+    #winning .content {
+        max-width: 75vw
+    }
+}
+
+@media (min-width:1440px) {
+    #winning .content {
+        max-width: 67vw
+    }
+}
+/*# sourceMappingURL=maat-landing.css.map */
+/*# sourceMappingURL=maat-landing.css.map */

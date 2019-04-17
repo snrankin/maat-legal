@@ -1,0 +1,10 @@
+.acf-fields > .acf-field.acf-divider{
+    padding: 0 !important;
+    width  : 100% !important;
+    flex   : 1 1 100%;
+    border : none !important;
+    .acf-label,
+    .acf-input{
+        display: none;
+    }
+}

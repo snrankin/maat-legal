@@ -1,6 +1,7 @@
 {
-    "name": "maat",
-    "version": "1.0.0",
+    "displayName": "Maat Legal Theme",
+    "name": "maat-theme",
+    "version": "0.9.0",
     "description": "Custom Wordpress theme based on Bootstrap 4 and advanced custom fields",
     "main": "index.js",
     "scripts": {
@@ -21,7 +22,7 @@
     "license": "GPL-3.0",
     "devDependencies": {
         "@babel/core": "latest",
-        "@babel/preset-env": "latest",
+        "@babel/preset-env": "^7.4.2",
         "autoprefixer": "latest",
         "babel-core": "latest",
         "babel-polyfill": "latest",
@@ -31,21 +32,28 @@
         "fancy-log": "latest",
         "gulp": "latest",
         "gulp-babel": "latest",
+        "gulp-beautify": "^3.0.0",
+        "gulp-buffer": "0.0.2",
         "gulp-cache-bust": "latest",
         "gulp-clean-css": "latest",
         "gulp-concat": "latest",
+        "gulp-count": "^1.0.0",
         "gulp-debug": "latest",
         "gulp-env": "latest",
         "gulp-filter": "latest",
+        "gulp-foreach": "^0.1.0",
         "gulp-hub": "^4.2.0",
+        "gulp-if": "^2.0.2",
+        "gulp-if-else": "^1.0.3",
         "gulp-imagemin": "latest",
+        "gulp-inject-string": "^1.1.2",
         "gulp-jshint": "latest",
         "gulp-line-ending-corrector": "latest",
         "gulp-newer": "latest",
         "gulp-notify": "latest",
         "gulp-plumber": "latest",
         "gulp-postcss": "latest",
-        "gulp-print": "latest",
+        "gulp-print": "^5.0.2",
         "gulp-rename": "latest",
         "gulp-rev": "latest",
         "gulp-rev-rewrite": "latest",
@@ -57,29 +65,33 @@
         "gulp-watch": "latest",
         "jshint": "latest",
         "jshint-stylish": "latest",
+        "lazypipe": "^1.0.2",
+        "node-sass-glob-importer": "^5.3.1",
         "npm": "latest",
         "postcss-aspect-ratio": "latest",
         "postcss-assets": "latest",
         "postcss-discard-duplicates": "latest",
         "postcss-easings": "latest",
+        "postcss-fixes": "^2.0.1",
         "postcss-focus": "latest",
-        "postcss-inline-svg": "latest",
+        "postcss-font-magician": "^2.2.1",
+        "postcss-inline-svg": "^3.1.1",
+        "postcss-letter-tracking": "^1.0.1",
         "postcss-momentum-scrolling": "latest",
+        "sort-css-media-queries": "^1.4.3",
+        "through": "^2.3.8",
         "vinyl-ftp": "^0.6.1"
     },
     "dependencies": {
         "ajv": "latest",
         "dotenv": "latest"
     },
-    "jshintConfig": {
-        "undef": true,
-        "unused": true,
-        "globals": {
-            "jQuery": true,
-            "google": true,
-            "window": true,
-            "document": true,
-            "console": true
-        }
-    }
+    "browserslist": [
+        "last 1 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead"
+    ],
+    "jshintFile": "/Users/sam/Google Drive/Web Development/configs/.jshintrc",
+    "globalNode": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/"
 }

@@ -1,0 +1,178 @@
+// ========================================================================= //
+// Component: _icons.scss
+// Project: maat
+// Created Date: 3-19-19
+// Author: Sam Rankin (sam@maatlegal.com>)
+// -----
+// Last Modified: 3-19-19 at 3:35 pm
+// Modified By: Sam Rankin <sam@maatlegal.com>
+// -----
+// Copyright (c) 2019 Maat Legal
+// -----
+// HISTORY:
+// Date      	By	Comments
+// ----------	---	----------------------------------------------------------
+// ========================================================================= //
+
+$icomoon-font-family: 'Maat-Legal';
+$icomoon-font-path: '../fonts/Maat-Legal';
+
+$maat-circle-plus: '\a300';
+$maat-circle-arrow-down: '\a301';
+$maat-circle-arrow-left: '\a302';
+$maat-circle-arrow-right: '\a303';
+$maat-circle-arrow-up: '\a304';
+$maat-circle-check: '\a305';
+$maat-circle-close: '\a306';
+$maat-circle-email: '\a307';
+$maat-circle-facebook: '\a308';
+$maat-circle-input: '\a309';
+$maat-circle-instagram: '\a30a';
+$maat-circle-linkedin: '\a30b';
+$maat-circle-minus: '\a30c';
+$maat-circle-phone: '\a30d';
+$maat-circle-pin: '\a30e';
+$maat-circle-quote-left: '\a30f';
+$maat-circle-quote-right: '\a310';
+$maat-circle-radio: '\a311';
+$maat-circle-twitter: '\a312';
+$maat-circle-youtube: '\a313';
+
+@font-face {
+    font-family: '#{$icomoon-font-family}';
+    src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?b11zp7');
+    src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?b11zp7#iefix')
+        format('embedded-opentype'),
+        url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?b11zp7')
+        format('truetype'),
+        url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?b11zp7')
+        format('woff'),
+        url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?b11zp7##{$icomoon-font-family}')
+        format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+%icon {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-decoration: inherit;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+    line-height: 1;
+    display: block;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+}
+
+.maat {
+    @extend %icon;
+
+    font-family: #{$icomoon-font-family} !important;
+}
+
+.maat-circle-plus {
+    &:before {
+        content: icon($maat-circle-plus);
+    }
+}
+.maat-circle-arrow-down {
+    &:before {
+        content: icon($maat-circle-arrow-down);
+    }
+}
+.maat-circle-arrow-left {
+    &:before {
+        content: icon($maat-circle-arrow-left);
+    }
+}
+.maat-circle-arrow-right {
+    &:before {
+        content: icon($maat-circle-arrow-right);
+    }
+}
+.maat-circle-arrow-up {
+    &:before {
+        content: icon($maat-circle-arrow-up);
+    }
+}
+.maat-circle-check {
+    &:before {
+        content: icon($maat-circle-check);
+    }
+}
+.maat-circle-close {
+    &:before {
+        content: icon($maat-circle-close);
+    }
+}
+.maat-circle-email {
+    &:before {
+        content: icon($maat-circle-email);
+    }
+}
+.maat-circle-facebook {
+    &:before {
+        content: icon($maat-circle-facebook);
+    }
+}
+.maat-circle-input {
+    &:before {
+        content: icon($maat-circle-input);
+    }
+}
+.maat-circle-instagram {
+    &:before {
+        content: icon($maat-circle-instagram);
+    }
+}
+.maat-circle-linkedin {
+    &:before {
+        content: icon($maat-circle-linkedin);
+    }
+}
+.maat-circle-minus {
+    &:before {
+        content: icon($maat-circle-minus);
+    }
+}
+.maat-circle-phone {
+    &:before {
+        content: icon($maat-circle-phone);
+    }
+}
+.maat-circle-pin {
+    &:before {
+        content: icon($maat-circle-pin);
+    }
+}
+.maat-circle-quote-left {
+    &:before {
+        content: icon($maat-circle-quote-left);
+    }
+}
+.maat-circle-quote-right {
+    &:before {
+        content: icon($maat-circle-quote-right);
+    }
+}
+.maat-circle-radio {
+    &:before {
+        content: icon($maat-circle-radio);
+    }
+}
+.maat-circle-twitter {
+    &:before {
+        content: icon($maat-circle-twitter);
+    }
+}
+.maat-circle-youtube {
+    &:before {
+        content: icon($maat-circle-youtube);
+    }
+}

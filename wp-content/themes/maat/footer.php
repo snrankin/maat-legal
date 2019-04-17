@@ -11,26 +11,36 @@
 
 ?>
 
-	</div><!-- #content -->
+</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'maat' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'maat' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'maat' ), 'maat', '<a href="https://maatlegal.com">Maat Legal</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<?php if (!is_page_template('landing-page.php')) {
+            get_component_partial('site-footer', 'template');
+        } ?>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "additionalType": "http://www.productontology.org/doc/Business_consultant",
+    "name": "Maat Legal",
+    "description": "Take your law firm to the next level with Maat Legal",
+    "image": "<?php echo wp_get_attachment_url( 94 ); ?>",
+    "logo": "<?php echo wp_get_attachment_url( 93 ); ?>",
+    "url": "https://maatlegal.com",
+    "telephone": "855-996-9993",
+    "sameAs": [
+        "https://twitter.com/MadeforLawyers",
+        "https://www.linkedin.com/company/dannaandassociates",
+        "https://plus.google.com/109692395148165905920",
+        "https://www.facebook.com/MAATlegal/",
+        "https://www.youtube.com/channel/UCtGzqrwYA8UtT1_JzQJYIuA",
+        "https://www.instagram.com/maatlegal"
+    ]
+}
+</script>
 
 </body>
+
 </html>

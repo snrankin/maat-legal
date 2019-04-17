@@ -11,6 +11,14 @@
  * @Description: This is description.
  */
 
+if (function_exists('acf_add_options_page')) {
+    acf_add_options_page(array(
+        'page_title' => 'Maat Schema Settings',
+        'menu_title' => 'Schema Settings',
+        'capability' => 'edit_posts',
+        'autoload' => true,
+    ));
+}
 
-include_once dirname(__FILE__) . '/partials/location-info.php';
-include_once dirname(__FILE__) . '/partials/json.php';
+include_component_partial(basename(__DIR__), 'location-info');
+include_component_partial(basename(__DIR__), 'json');

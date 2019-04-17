@@ -1,0 +1,78 @@
+.logo {
+    max-width: ms(5);
+    margin-bottom: 0;
+}
+
+.tagline {
+    line-height: 0.9;
+    filter: drop-shadow(0 0 0.5rem rgba($dark, 0.5));
+    @include grid-spacing('margin-top' 'margin-bottom');
+}
+
+h6 {
+    @include grid-spacing('margin-bottom');
+}
+
+#wpcf7-f118-p6-o1 {
+    .help-block {
+        color: #fff;
+    }
+    .ajax-loader::after {
+        border-top: 0.33rem solid rgba($secondary, 0.2);
+        border-right: 0.33rem solid rgba($secondary, 0.2);
+        border-bottom: 0.33rem solid rgba($secondary, 0.2);
+        border-left: 0.33rem solid $secondary;
+    }
+}
+
+.schema-info-container {
+    width: calc(100% + 4rem);
+    margin: 0 -2rem -1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    .schema-link {
+        display: block;
+        color: #fff;
+        margin: 0 2rem 1rem;
+
+        @include hover-focus-active {
+            color: $secondary;
+            text-decoration: none;
+        }
+    }
+
+    .schema-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .schema-icon {
+        @extend .maat;
+        @include fs(1);
+
+        display: block;
+        margin-right: 0.5rem;
+        padding-left: 1px;
+        color: $secondary;
+    }
+
+    .phone {
+        .schema-icon {
+            &::before {
+                content: icon($maat-circle-phone);
+            }
+        }
+    }
+
+    .email {
+        .schema-icon {
+            &::before {
+                content: icon($maat-circle-email);
+            }
+        }
+    }
+}

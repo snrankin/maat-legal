@@ -1,0 +1,550 @@
+// ========================================================================= //
+// Component: _functions.scss
+// Project: maat
+// Created Date: 3-14-19
+// Author: Sam Rankin (sam@maatlegal.com>)
+// -----
+// Last Modified: 4-15-19 at 11:56 am
+// Modified By: Sam Rankin <sam@maatlegal.com>
+// -----
+// Copyright (c) 2019 Maat Legal
+// -----
+// HISTORY:
+// Date      	By	Comments
+// ----------	---	----------------------------------------------------------
+// ========================================================================= //
+
+// Bootstrap functions
+//
+// Utility mixins and functions for evalutating source code across our variables, maps, and mixins.
+// Ascending
+// Used to evaluate Sass maps like our grid breakpoints.
+@import 'bootstrap/scss/functions';
+
+/// linear-interpolation
+/// Calculate the definition of a line between two points
+/// @param $map - A Sass map of viewport widths and size value pairs
+/// @returns A linear equation as a calc() function
+// @example
+//   font-size: linear-interpolation((320px: 18px, 768px: 26px));
+/// @author Jake Wilson <jake.e.wilson@gmail.com>
+@function linear-interpolation($map) {
+    $keys: map-keys($map);
+    @if (length($keys) != 2) {
+        @error 'linear-interpolation() $map must be exactly 2 values';
+    }
+    // The slope
+    $m: (map-get($map, nth($keys, 2)) - map-get($map, nth($keys, 1)))/ (nth(
+        $keys,
+        2
+    ) - nth($keys, 1));
+
+    // The y-intercept
+    $b: map-get($map, nth($keys, 1)) - $m * nth($keys, 1);
+
+    // Determine if the sign should be positive or negative
+    $sign: '+';
+    @if ($b < 0) {
+        $sign: '-';
+        $b: abs($b);
+    }
+
+    @return calc(#{$m * 100}vw #{$sign} #{$b});
+}
+
+@function map-multiplier($map, $multiplier: 1) {
+    $keys: map-keys($map);
+    $multipliedMap: ();
+    @each $key in $keys {
+        $multipliedMap: map-merge(
+            $multipliedMap,
+            (
+                $key: map-get($map, $key) * $multiplier
+            )
+        );
+    }
+    @return $multipliedMap;
+}
+
+/// map-sort
+/// Sort map by keys
+/// @param $map - A SASS map
+/// @returns A SASS map sorted by keys
+/// @requires function list-sort
+/// @author Jake Wilson <jake.e.wilson@gmail.com>
+@function map-sort($map) {
+    $keys: list-sort(map-keys($map));
+    $sortedMap: ();
+    @each $key in $keys {
+        $sortedMap: map-merge(
+            $sortedMap,
+            (
+                $key: map-get($map, $key)
+            )
+        );
+    }
+    @return $sortedMap;
+}
+
+/// list-sort
+/// Sort a SASS list
+/// @param $list - A SASS list
+/// @returns A sorted SASS list
+/// @requires function list-remove
+/// @author Jake Wilson <jake.e.wilson@gmail.com>
+@function list-sort($list) {
+    $sortedlist: ();
+    @while length($list) > 0 {
+        $value: nth($list, 1);
+        @each $item in $list {
+            @if $item < $value {
+                $value: $item;
+            }
+        }
+        $sortedlist: append($sortedlist, $value, 'space');
+        $list: list-remove($list, index($list, $value));
+    }
+    @return $sortedlist;
+}
+
+/// list-remove
+/// Remove an item from a list
+/// @param $list - A SASS list
+/// @param $index - The list index to remove
+/// @returns A SASS list
+/// @author Jake Wilson <jake.e.wilson@gmail.com>
+@function list-remove($list, $index) {
+    $newList: ();
+    @for $i from 1 through length($list) {
+        @if $i != $index {
+            $newList: append($newList, nth($list, $i), 'space');
+        }
+    }
+    @return $newList;
+}
+
+///
+/// Add `$unit` to `$value`
+///
+/// @param {Number} $value - Value to add unit to
+/// @param {String} $unit - String representation of the unit
+///
+/// @return {Number} - `$value` expressed in `$unit`
+///
+@function to-length($value, $unit) {
+    $units: (
+        'px': 1px,
+        'cm': 1cm,
+        'mm': 1mm,
+        '%': 1%,
+        'ch': 1ch,
+        'pc': 1pc,
+        'in': 1in,
+        'em': 1em,
+        'rem': 1rem,
+        'pt': 1pt,
+        'ex': 1ex,
+        'vw': 1vw,
+        'vh': 1vh,
+        'vmin': 1vmin,
+        'vmax': 1vmax
+    );
+
+    @if not index(map-keys($units), $unit) {
+        $_: log('Invalid unit `#{$unit}`.');
+    }
+
+    @return $value * map-get($units, $unit);
+}
+
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+///
+/// Casts a string into a number
+///
+/// @param {String | Number} $value - Value to be parsed
+///
+/// @return {Number}
+///
+@function to-number($value) {
+    @if type-of($value) == 'number' {
+        @return $value;
+    } @else if type-of($value) != 'string' {
+        $_: log('Value for `to-number` should be a number or a string.');
+    }
+
+    $result: 0;
+    $digits: 0;
+    $minus: str-slice($value, 1, 1) == '-';
+    $numbers: (
+        '0': 0,
+        '1': 1,
+        '2': 2,
+        '3': 3,
+        '4': 4,
+        '5': 5,
+        '6': 6,
+        '7': 7,
+        '8': 8,
+        '9': 9
+    );
+
+    @for $i from if($minus, 2, 1) through str-length($value) {
+        $character: str-slice($value, $i, $i);
+
+        @if not(index(map-keys($numbers), $character) or $character == '.') {
+            @return to-length(
+                if($minus, -$result, $result),
+                str-slice($value, $i)
+            );
+        }
+
+        @if $character == '.' {
+            $digits: 1;
+        } @else if $digits == 0 {
+            $result: $result * 10 + map-get($numbers, $character);
+        } @else {
+            $digits: $digits * 10;
+            $result: $result + map-get($numbers, $character) / $digits;
+        }
+    }
+
+    @return if($minus, -$result, $result);
+}
+
+// Calculate REM
+
+@function rem($size) {
+    $font-base: to-number(16px);
+    $font-size: to-number($size);
+    $remSize: strip-unit($font-size) / strip-unit($font-base);
+    @return #{$remSize}rem;
+}
+
+@function linear-interpolation-with-neg($map, $neg: false) {
+    $keys: map-keys($map);
+    @if (length($keys) != 2) {
+        @error 'linear-interpolation() $map must be exactly 2 values';
+    }
+    // The slope
+
+    $x1: nth($keys, 1);
+    $x2: nth($keys, 2);
+    $y1: to-number(map-get($map, nth($keys, 1)));
+    $y2: to-number(map-get($map, nth($keys, 2)));
+
+    $m: (strip-unit($y2) - strip-unit($y1)) /
+        (strip-unit($x2) - strip-unit($x1));
+
+    // The y-intercept
+    $b: $y1 - $m * $x1;
+    // Determine if the sign should be positive or negative
+    $sign: '+';
+    @if ($b < 0) {
+        $sign: '-';
+        $b: abs($b);
+    }
+
+    @if $neg == true {
+        @return calc(-#{$m * 100}vw #{$sign} -#{$b});
+    } @else {
+        @return calc(#{$m * 100}vw #{$sign} #{$b});
+    }
+}
+
+@function linear-interpolation-width($width, $map, $neg: true) {
+    $keys: map-keys($map);
+    @if (length($keys) != 2) {
+        @error 'linear-interpolation() $map must be exactly 2 values';
+    }
+    // The slope
+
+    $x1: nth($keys, 1);
+    $x2: nth($keys, 2);
+    $y1: to-number(map-get($map, nth($keys, 1)));
+    $y2: to-number(map-get($map, nth($keys, 2)));
+
+    $m: (strip-unit($y2) - strip-unit($y1)) /
+        (strip-unit($x2) - strip-unit($x1));
+
+    // The y-intercept
+    $b: $y1 - $m * $x1;
+
+    // Determine if the sign should be positive or negative
+    $sign: '+';
+    @if ($b < 0) {
+        $sign: '-';
+        $b: abs($b);
+    }
+
+    @if $neg == true {
+        @return calc(#{$width} + (#{$m * 100}vw #{$sign} #{$b}));
+    } @else {
+        @return calc(#{$width} - (#{$m * 100}vw #{$sign} #{$b}));
+    }
+}
+
+@function contains($list, $var) {
+    $contains: false;
+    @each $item in $list {
+        @if $item == $var {
+            $contains: true;
+        }
+    }
+    @return $contains;
+}
+
+@function bp($name, $breakpoints: $custom-breakpoints) {
+    @return map-get($breakpoints, $name);
+}
+
+/// An equivalent of `zip` function but for maps.
+/// Takes two lists, the first for keys, second for values.
+/// @param {List} $keys - Keys for map
+/// @param {List} $values - Values for map
+/// @return {Map} Freshly created map
+/// @see http://sass-lang.com/documentation/Sass/Script/Functions.html#zip-instance_method
+@function map-zip($keys, $values) {
+    $l-keys: length($keys);
+    $l-values: length($values);
+    $min: min($l-keys, $l-values);
+    $map: ();
+
+    @if $l-keys != $l-values {
+        @warn 'There are #{$l-keys} key(s) for #{$l-values} value(s) in the map for `map-zip`. '
+            + 'Resulting map will only have #{$min} pairs.';
+    }
+
+    @if $min == 0 {
+        @return $map;
+    }
+
+    @for $i from 1 through $min {
+        $map: map-merge(
+            $map,
+            (
+                nth($keys, $i): nth($values, $i)
+            )
+        );
+    }
+
+    @return $map;
+}
+
+// Sass does not have native pow() support so this needs to be added.
+// Compass and other libs implement this more extensively.
+// In order to keep this simple, use those when they are avalible.
+// Issue for pow() support in Sass: https://github.com/sass/sass/issues/684
+
+@function ms-pow($b, $e) {
+    // Return 1 if exponent is 0
+    @if $e == 0 {
+        @return 1;
+    }
+
+    // If pow() exists (compass or mathsass) use that.
+    @if function-exists('pow') {
+        @return pow($b, $e);
+    }
+
+    // This does not support non-integer exponents,
+    // Check and return an error if a non-integer exponent is passed.
+    @if (floor($e) != $e) {
+        @error 'Non-integer values are not supported in modularscale by default. Try using mathsass in your project to add non-integer scale support. https://github.com/terkel/mathsass';
+    }
+
+    // Seed the return.
+    $ms-return: $b;
+
+    // Multiply or divide by the specified number of times.
+    @if $e > 0 {
+        @for $i from 1 to $e {
+            $ms-return: $ms-return * $b;
+        }
+    }
+    @if $e < 0 {
+        @for $i from $e through 0 {
+            $ms-return: $ms-return / $b;
+        }
+    }
+    @return $ms-return;
+}
+
+// Parse settings starting with defaults.
+// Settings should cascade down like you would expect in CSS.
+// More specific overrides previous settings.
+
+@function ms-settings($b: false, $r: false, $t: false, $m: $modularscale) {
+    $base: $ms-base;
+    $ratio: $ms-ratio;
+    $thread: map-get($m, $t);
+
+    // Override with user settings
+    @if map-get($m, base) {
+        $base: map-get($m, base);
+    }
+    @if map-get($m, ratio) {
+        $ratio: map-get($m, ratio);
+    }
+
+    // Override with thread settings
+    @if $thread {
+        @if map-get($thread, base) {
+            $base: map-get($thread, base);
+        }
+        @if map-get($thread, ratio) {
+            $ratio: map-get($thread, ratio);
+        }
+    }
+
+    // Override with inline settings
+    @if $b {
+        $base: $b;
+    }
+    @if $r {
+        $ratio: $r;
+    }
+
+    @return $base $ratio;
+}
+
+// Convert number string to number
+@function ms-to-num($n) {
+    $l: str-length($n);
+    $r: 0;
+    $m: str-index($n, '.');
+    @if $m == null {
+        $m: $l + 1;
+    }
+    // Loop through digits and convert to numbers
+    @for $i from 1 through $l {
+        $v: str-slice($n, $i, $i);
+        @if $v == '1' {
+            $v: 1;
+        } @else if $v == '2' {
+            $v: 2;
+        } @else if $v == '3' {
+            $v: 3;
+        } @else if $v == '4' {
+            $v: 4;
+        } @else if $v == '5' {
+            $v: 5;
+        } @else if $v == '6' {
+            $v: 6;
+        } @else if $v == '7' {
+            $v: 7;
+        } @else if $v == '8' {
+            $v: 8;
+        } @else if $v == '9' {
+            $v: 9;
+        } @else if $v == '0' {
+            $v: 0;
+        } @else {
+            $v: null;
+        }
+        @if $v != null {
+            $m: $m - 1;
+            $r: $r + ms-pow(10, $m - 1) * $v;
+        } @else {
+            $l: $l - 1;
+        }
+    }
+    @return $r;
+}
+
+// Find a ratio based on a target value
+@function ms-target($t, $b) {
+    // Convert to string
+    $t: $t + '';
+    // Remove base units to calulate ratio
+    $b: ms-unitless(nth($b, 1));
+    // Find where 'at' is in the string
+    $at: str-index($t, 'at');
+
+    // Slice the value and target out
+    // and convert strings to numbers
+    $v: ms-to-num(str-slice($t, 0, $at - 1));
+    $t: ms-to-num(str-slice($t, $at + 2));
+
+    // Solve the modular scale function for the ratio.
+    @return ms-pow(($v/$b), (1 / $t));
+}
+
+@function ms-function(
+    $v: 0,
+    $base: false,
+    $ratio: false,
+    $thread: false,
+    $settings: $modularscale
+) {
+    // Parse settings
+    $ms-settings: ms-settings($base, $ratio, $thread, $settings);
+    $base: nth($ms-settings, 1);
+    $ratio: nth($ms-settings, 2);
+
+    // Render target values from settings.
+    @if unit($ratio) != '' {
+        $ratio: ms-target($ratio, $base);
+    }
+
+    // Fast calc if not multi stranded
+    @if (length($base) == 1) {
+        @return ms-pow($ratio, $v) * $base;
+    }
+
+    // Create new base array
+    $ms-bases: nth($base, 1);
+
+    // Normalize base values
+    @for $i from 2 through length($base) {
+        // initial base value
+        $ms-base: nth($base, $i);
+        // If the base is bigger than the main base
+        @if ($ms-base > nth($base, 1)) {
+            // divide the value until it aligns with main base.
+            @while ($ms-base > nth($base, 1)) {
+                $ms-base: $ms-base / $ratio;
+            }
+            $ms-base: $ms-base * $ratio;
+        }
+        // If the base is smaller than the main base.
+        @else if ($ms-base < nth($base, 1)) {
+            // pump up the value until it aligns with main base.
+            @while $ms-base < nth($base, 1) {
+                $ms-base: $ms-base * $ratio;
+            }
+        }
+        // Push into new array
+        $ms-bases: append($ms-bases, $ms-base);
+    }
+
+    // Sort array from smallest to largest.
+    $ms-bases: ms-sort($ms-bases);
+
+    // Find step to use in calculation
+    $vtep: floor($v / length($ms-bases));
+    // Find base to use in calculation
+    $ms-base: round(($v / length($ms-bases) - $vtep) * length($ms-bases)) + 1;
+
+    @return ms-pow($ratio, $vtep) * nth($ms-bases, $ms-base);
+}
+
+@function ms(
+    $v: 0,
+    $base: false,
+    $ratio: false,
+    $thread: false,
+    $settings: $modularscale
+) {
+    @return ms-function($v, $base, $ratio, $thread, $settings);
+}
+
+@function icon($var) {
+    @return unquote('"#{ $var }"');
+}

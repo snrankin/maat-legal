@@ -40,3 +40,29 @@ function maat_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'maat_pingback_header' );
+
+function theme_logo($class = ''){
+    $custom_logo_id = get_theme_mod('custom_logo');
+    if(!empty($custom_logo_id)):
+        $classes = array('site-title', 'text-hide', 'logo');
+		if(!empty($class)){
+			$custom_classes = explode(' ',$class);
+			foreach ($custom_classes as $custom_class) {
+				array_push($classes, $custom_class);
+			}
+		}
+		$classes = maat_add_item_classes($classes);
+        $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+        $logo_url = $image[0];
+        $styles = maat_add_item_styles(array(
+			'background-image' => $logo_url,
+			'background-position' => 'center center',
+			'background-repeat' => 'no-repeat',
+			'background-size' => 'contain'
+		));
+        $wrapper = $classes . $styles;
+?>
+<h1 <?php echo $wrapper; ?>><a href="<?php echo esc_url(home_url('/')); ?>" rel="home" title="<?php bloginfo('name'); ?>" class="stretched-link"><?php bloginfo('name'); ?></a></h1>
+<?php
+endif;
+}

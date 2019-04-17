@@ -6,7 +6,7 @@
  * @copyright 2019 Maat Legal
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * -----
- * Last Modified: 3-12-19 at 4:48 pm
+ * Last Modified: 3-21-19 at 1:40 pm
  * Modified By: Sam Rankin <sam@maatlegal.com>
  * -----
  * Template part for displaying page content in landing-page.php
@@ -28,16 +28,25 @@ while (have_posts()) :
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="entry-content">
-        <?php
-        the_content();
-
-        wp_link_pages(
-            array(
-                'before' => '<div class="page-links">' . __('Pages:', 'maat'),
-                'after'  => '</div>',
-            )
-        );
-        ?>
+        <div class="container-wrapper">
+            <div class="container-wrapper-inner">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+                            <div class="content-wrapper align-items-center justify-content-center full-height-section">
+                                <?php the_content(); ?>
+                                <?php
+                                    wp_link_pages(array(
+                                        'before' => '<div class="page-links">' . __('Pages:', 'maat'),
+                                        'after'  => '</div>',
+                                    ));
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div><!-- .entry-content -->
 
     <?php if (get_edit_post_link()) : ?>
@@ -67,4 +76,4 @@ while (have_posts()) :
     comments_template();
 }
 
-endwhile; ?> 
+endwhile; ?>

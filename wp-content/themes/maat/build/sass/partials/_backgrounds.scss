@@ -1,0 +1,64 @@
+// ========================================================================= //
+// File: /build/sass/partials/_backgrounds.scss
+// Project: Maat Legal Theme
+// -----
+// Author: Sam Rankin (sam@maatlegal.com>)
+// Copyright (c) 2019 Maat Legal
+// -----
+// Created Date: 4-3-19
+// Last Modified: 4-3-19 at 3:42 pm
+// Modified By: Sam Rankin <sam@maatlegal.com>
+// -----
+// HISTORY:
+// Date    	By	Comments
+// --------	--	--------------------------------------------------------------
+// ========================================================================= //
+
+@each $color, $value in $theme-colors {
+    .bg-#{$color} {
+        p,
+        li,
+        span,
+        i,
+        strong,
+        a,
+        div,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        blockquote {
+            color: color-yiq($value);
+        }
+    }
+}
+
+@each $color, $value in $grays {
+    @include bg-variant('.bg-gray-#{$color}', $value);
+    .bg-gray-#{$color} {
+        p,
+        li,
+        span,
+        i,
+        strong,
+        a,
+        div,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        blockquote {
+            color: color-yiq($value);
+        }
+    }
+}
+
+@if $enable-gradients {
+    @each $color, $value in $grays {
+        @include bg-gradient-variant('.bg-gradient-gray-#{$color}', $value);
+    }
+}

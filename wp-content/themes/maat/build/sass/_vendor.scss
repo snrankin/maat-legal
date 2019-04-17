@@ -1,0 +1,37 @@
+// ========================================================================= //
+// File: /build/sass/_vendor.scss
+// Project: Maat Legal Theme
+// -----
+// Author: Sam Rankin (sam@maatlegal.com>)
+// Copyright (c) 2019 Maat Legal
+// -----
+// Created Date: 4-15-19
+// Last Modified: 4-15-19 at 12:14 pm
+// Modified By: Sam Rankin <sam@maatlegal.com>
+// -----
+// HISTORY:
+// Date    	By	Comments
+// --------	--	--------------------------------------------------------------
+// ========================================================================= //
+
+// Modular Scale ==============================================================
+@import 'mathsass/dist/_math';
+@import 'modularscale-sass/stylesheets/modularscale';
+
+// Font Awesome  ==============================================================
+$fa-font-path: '../fonts/font-awesome';
+@import '@fortawesome/fontawesome-free/scss/variables';
+
+// Owl Carousel  ==============================================================
+@import 'owl.carousel/src/scss/owl.carousel';
+@import 'owl.carousel/src/scss/owl.theme.default';
+
+// Fancybox  ==================================================================
+$fancybox-image-url: '../imgs';
+@import 'fancybox/dist/scss/jquery.fancybox';
+
+// Select2.js  ================================================================
+@import 'select2/src/scss/core';
+
+// Custom Icon Font ===========================================================
+@import 'partials/icons';

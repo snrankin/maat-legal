@@ -1,0 +1,100 @@
+// ========================================================================= //
+// Component: _grid.scss
+// Project: maat
+// Created Date: 3-21-19
+// Author: Sam Rankin (sam@maatlegal.com>)
+// -----
+// Last Modified: 4-9-19 at 1:10 pm
+// Modified By: Sam Rankin <sam@maatlegal.com>
+// -----
+// Copyright (c) 2019 Maat Legal
+// -----
+// HISTORY:
+// Date      	By	Comments
+// ----------	---	----------------------------------------------------------
+// ========================================================================= //
+
+.section-inner {
+    padding: ms(1.5) ms(1);
+}
+
+.container,
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.grid-half {
+    .row {
+        margin-right: -#{$gutters-25};
+        margin-left: -#{$gutters-25};
+        &:last-child {
+            margin-bottom: -#{$gutters-50};
+        }
+    }
+    [class^='col-'] {
+        padding-right: $gutters-25;
+        padding-left: $gutters-25;
+        margin-bottom: $gutters-50;
+    }
+}
+
+.row {
+    &:last-child {
+        @include grid-spacing(
+            'margin-bottom',
+            $neg: true,
+            $spacing: $gutters-200
+        );
+    }
+}
+
+[class*='col-'] {
+    margin-bottom: $gutters-100;
+}
+
+// 5 Column grid excluding col-100
+$breakpoints: $grid-breakpoints;
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    // Allow columns to stretch full width below their breakpoints
+    @for $i from 1 through 4 {
+        .col#{$infix}-#{100/5*$i} {
+            position: relative;
+            width: 100%;
+            padding-right: $grid-gutter-width / 2;
+            padding-left: $grid-gutter-width / 2;
+        }
+    }
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+        @for $i from 1 through 4 {
+            .col#{$infix}-#{100/5*$i} {
+                @include make-col($i, 5);
+            }
+        }
+    }
+}
+
+.content-wrapper {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}
+.content-item {
+    margin-bottom: $grid-gutter-width;
+    position: relative;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}

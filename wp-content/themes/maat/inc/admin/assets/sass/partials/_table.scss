@@ -1,0 +1,16 @@
+.acf-table>tbody {
+    >tr.acf-field {
+        margin: 0;
+        >td.acf-label {
+            padding: 15px;
+        }
+        >td.acf-input {
+            padding: 15px;
+            flex-wrap: wrap;
+            .acf-fc-meta,
+            .acf-field-list-wrap {
+                width: 100%;
+            }
+        }
+    }
+}
