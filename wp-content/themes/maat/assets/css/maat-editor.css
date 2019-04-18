@@ -220,16 +220,10 @@ a.text-dark:hover {
 }
 
 .d-flex {
-    display: -webkit-box !important;
-    display: -webkit-flex !important;
-    display: -ms-flexbox !important;
     display: flex !important
 }
 
 .d-inline-flex {
-    display: -webkit-inline-box !important;
-    display: -webkit-inline-flex !important;
-    display: -ms-inline-flexbox !important;
     display: inline-flex !important
 }
 
@@ -601,23 +595,12 @@ body#tinymce .list-unstyled {
 
 #poststuff .wpb_vc_param_value.content .list-inline,
 body#tinymce .list-inline {
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
     display: inline-flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     list-style-type: none;
     padding-left: 0;
     margin-left: 0;
-    -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
     justify-content: flex-start;
-    -webkit-box-align: start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
     align-items: flex-start;
     margin-right: -16px;
     margin-right: -1rem;
@@ -762,16 +745,10 @@ html {
     }
 
     .d-sm-flex {
-        display: -webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
         display: flex !important
     }
 
     .d-sm-inline-flex {
-        display: -webkit-inline-box !important;
-        display: -webkit-inline-flex !important;
-        display: -ms-inline-flexbox !important;
         display: inline-flex !important
     }
 }
@@ -818,16 +795,10 @@ html {
     }
 
     .d-ms-flex {
-        display: -webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
         display: flex !important
     }
 
     .d-ms-inline-flex {
-        display: -webkit-inline-box !important;
-        display: -webkit-inline-flex !important;
-        display: -ms-inline-flexbox !important;
         display: inline-flex !important
     }
 }
@@ -874,16 +845,10 @@ html {
     }
 
     .d-md-flex {
-        display: -webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
         display: flex !important
     }
 
     .d-md-inline-flex {
-        display: -webkit-inline-box !important;
-        display: -webkit-inline-flex !important;
-        display: -ms-inline-flexbox !important;
         display: inline-flex !important
     }
 }
@@ -930,16 +895,10 @@ html {
     }
 
     .d-ml-flex {
-        display: -webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
         display: flex !important
     }
 
     .d-ml-inline-flex {
-        display: -webkit-inline-box !important;
-        display: -webkit-inline-flex !important;
-        display: -ms-inline-flexbox !important;
         display: inline-flex !important
     }
 }
@@ -986,16 +945,10 @@ html {
     }
 
     .d-lg-flex {
-        display: -webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
         display: flex !important
     }
 
     .d-lg-inline-flex {
-        display: -webkit-inline-box !important;
-        display: -webkit-inline-flex !important;
-        display: -ms-inline-flexbox !important;
         display: inline-flex !important
     }
 }
@@ -1042,16 +995,10 @@ html {
     }
 
     .d-xl-flex {
-        display: -webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
         display: flex !important
     }
 
     .d-xl-inline-flex {
-        display: -webkit-inline-box !important;
-        display: -webkit-inline-flex !important;
-        display: -ms-inline-flexbox !important;
         display: inline-flex !important
     }
 }
@@ -1098,16 +1045,10 @@ html {
     }
 
     .d-xx-flex {
-        display: -webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
         display: flex !important
     }
 
     .d-xx-inline-flex {
-        display: -webkit-inline-box !important;
-        display: -webkit-inline-flex !important;
-        display: -ms-inline-flexbox !important;
         display: inline-flex !important
     }
 }
@@ -1142,16 +1083,10 @@ html {
     }
 
     .d-print-flex {
-        display: -webkit-box !important;
-        display: -webkit-flex !important;
-        display: -ms-flexbox !important;
         display: flex !important
     }
 
     .d-print-inline-flex {
-        display: -webkit-inline-box !important;
-        display: -webkit-inline-flex !important;
-        display: -ms-inline-flexbox !important;
         display: inline-flex !important
     }
 }

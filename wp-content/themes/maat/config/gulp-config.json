@@ -11,17 +11,10 @@
         "prod": "https://maatlegal.com"
     },
     "browsers": [
-        "last 2 version",
+        "last 1 version",
         "> 1%",
-        "ie >= 9",
-        "ie_mob >= 10",
-        "ff >= 30",
-        "chrome >= 34",
-        "safari >= 7",
-        "opera >= 23",
-        "ios >= 7",
-        "android >= 4",
-        "bb >= 10"
+        "maintained node versions",
+        "not dead"
     ],
     "paths": {
         "abs": {
@@ -61,20 +54,22 @@
     "js": {
         "main": "./build/js/*.js",
         "admin": "./inc/admin/**/assets/js/*.js",
-        "vendor": [
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/js/jquery.fancybox.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/dist/owl.carousel.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/waypoints/lib/jquery.waypoints.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/select2/dist/js/select2.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/aspectratio/ls.aspectratio.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/bgset/ls.bgset.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/blur-up/ls.blur-up.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/object-fit/ls.object-fit.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/parent-fit/ls.parent-fit.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/progressive/ls.progressive.js",
-            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/lazysizes.js"
-        ],
+        "vendor": {
+            "bootstrap.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+            "fancybox.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/js/jquery.fancybox.js",
+            "owlCarousel.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/dist/owl.carousel.js",
+            "wayPoints.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/waypoints/lib/jquery.waypoints.js",
+            "select2.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/select2/dist/js/select2.js",
+            "lazysizes.js": [
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/aspectratio/ls.aspectratio.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/bgset/ls.bgset.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/blur-up/ls.blur-up.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/object-fit/ls.object-fit.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/parent-fit/ls.parent-fit.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/progressive/ls.progressive.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/lazysizes.js"
+            ]
+        },
         "pages": "./inc/pages/**/build/js/*.js"
     },
     "images": [
@@ -82,5 +77,26 @@
         "!node_module/**/imgs/**/*",
         "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/img/**/*",
         "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/src/img/**/*"
-    ]
+    ],
+    "modernizr": {
+        "options": [
+            "setClasses",
+            "addTest",
+            "atRule",
+            "domPrefixes",
+            "hasEvent",
+            "html5shiv",
+            "html5printshiv",
+            "load",
+            "mq",
+            "prefixed",
+            "prefixes",
+            "prefixedCSS",
+            "setClasses",
+            "testAllProps",
+            "testProp",
+            "testStyles"
+        ],
+        "uglify": false
+    }
 }
