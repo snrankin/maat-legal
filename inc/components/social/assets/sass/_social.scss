@@ -1,0 +1,45 @@
+$social-colors: (
+    'facebook': #3c5a99,
+    'instagram': #e1306c,
+    'google': #db4437,
+    'linkedin': #006192,
+    'twitter': #1da1f2,
+    'yelp': #d32123,
+    'youtube': #f00
+);
+
+.social-list {
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow: hidden;
+    .social-list-inner {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .social-list-item {
+        // @each $profile, $color in $social-colors {
+        //     &.#{$profile} a:hover i {
+        //         background-color: $color;
+        //     }
+        // }
+        a {
+            display: block;
+            position: relative;
+            line-height: 1;
+            @include plain-hover-focus {
+                text-decoration: none;
+            }
+            i {
+                display: block;
+                text-align: center;
+                transition: $transition-base;
+                &::before {
+                    display: block;
+                }
+            }
+        }
+    }
+}

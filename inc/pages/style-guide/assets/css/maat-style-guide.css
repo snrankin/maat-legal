@@ -1,0 +1,29 @@
+#style-guide>.section>.section-inner {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important
+}
+
+#style-guide>.section>.section-inner>.container {
+    padding-top: 81px;
+    padding-top: 5.0625rem;
+    padding-bottom: 81px;
+    padding-bottom: 5.0625rem
+}
+
+#style-guide>.section+.section>.section-inner>.container {
+    border-top: 1px solid #b7babc
+}
+
+#style-guide .content-item {
+    margin: 24px 0;
+    margin: 1.5rem 0
+}
+
+#style-guide .content-item:first-child {
+    margin-top: 0
+}
+
+#style-guide .content-item:last-child {
+    margin-bottom: 0
+}
+/*# sourceMappingURL=maat-style-guide.css.map */

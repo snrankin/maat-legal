@@ -1,0 +1,273 @@
+{
+    "displayName": "Maat Legal Theme",
+    "name": "maat",
+    "version": "0.9.0",
+    "env": "dev",
+    "private": true,
+    "description": "Custom Wordpress theme based on Bootstrap 4 and advanced custom fields",
+    "main": "index.js",
+    "scripts": {
+        "test": "maat test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/sam-n-rankin/maat-legal"
+    },
+    "bugs": {
+        "url": "https://bitbucket.org/sam-n-rankin/maat-legal/admin/issues"
+    },
+    "keywords": [
+        "wordpress",
+        "bootstrap4",
+        "acf",
+        "responsive",
+        "underscores",
+        "gulp"
+    ],
+    "author": {
+        "name": "Maat Legal",
+        "email": "dev@maatlegal.com"
+    },
+    "license": "GPL-3.0",
+    "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "@babel/preset-env": "^7.4.5",
+        "autoprefixer": "^9.6.0",
+        "babel-core": "latest",
+        "babel-polyfill": "latest",
+        "babel-preset-env": "latest",
+        "browser-sync": "^2.26.7",
+        "css-mqpacker": "latest",
+        "fancy-log": "latest",
+        "gulp": "^4.0.2",
+        "gulp-assets-injector": "^1.1.2",
+        "gulp-babel": "latest",
+        "gulp-beautify": "latest",
+        "gulp-changed": "^3.2.0",
+        "gulp-clean-css": "latest",
+        "gulp-concat": "latest",
+        "gulp-concat-multi": "latest",
+        "gulp-debug": "latest",
+        "gulp-env": "latest",
+        "gulp-filter": "^6.0.0",
+        "gulp-if": "latest",
+        "gulp-imagemin": "^6.0.0",
+        "gulp-inject-string": "latest",
+        "gulp-inline-fonts": "^1.2.1",
+        "gulp-jshint": "latest",
+        "gulp-line-ending-corrector": "latest",
+        "gulp-modernizr-build": "latest",
+        "gulp-newer": "latest",
+        "gulp-notify": "latest",
+        "gulp-plumber": "latest",
+        "gulp-postcss": "latest",
+        "gulp-print": "latest",
+        "gulp-rename": "latest",
+        "gulp-sass": "latest",
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-strip-comments": "latest",
+        "gulp-uglify": "latest",
+        "gulp-watch": "latest",
+        "jshint": "latest",
+        "jshint-stylish": "latest",
+        "lazypipe": "latest",
+        "merge-stream": "^1.0.1",
+        "node-sass-glob-importer": "^5.3.2",
+        "npm": "latest",
+        "postcss-aspect-ratio": "latest",
+        "postcss-aspect-ratio-from-bg-image": "^0.2.8",
+        "postcss-assets": "latest",
+        "postcss-easing-gradients": "^3.0.1",
+        "postcss-easings": "latest",
+        "postcss-filter-gradient": "^1.0.0",
+        "postcss-fixes": "latest",
+        "postcss-font-awesome": "^0.4.0",
+        "postcss-font-magician": "^2.2.1",
+        "postcss-inline-svg": "latest",
+        "postcss-letter-tracking": "latest",
+        "postcss-momentum-scrolling": "latest",
+        "prettier": "^1.18.2",
+        "prettier-stylelint": "^0.4.2",
+        "sort-css-media-queries": "latest",
+        "stylelint": "^10.1.0",
+        "stylelint-config-prettier": "^5.2.0",
+        "stylelint-config-standard": "^18.3.0",
+        "vinyl-ftp": "latest"
+    },
+    "globalNode": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/",
+    "modernizr": {
+        "options": [
+            "setClasses",
+            "addTest",
+            "atRule",
+            "domPrefixes",
+            "hasEvent",
+            "html5shiv",
+            "html5printshiv",
+            "load",
+            "mq",
+            "prefixed",
+            "prefixes",
+            "prefixedCSS",
+            "setClasses",
+            "testAllProps",
+            "testProp",
+            "testStyles"
+        ],
+        "uglify": false
+    },
+    "browserslist": [
+        "> 0.5%",
+        "last 2 versions",
+        "Firefox ESR",
+        "not dead"
+    ],
+    "jshintConfig": {
+        "maxerr": 50,
+        "bitwise": true,
+        "camelcase": false,
+        "curly": true,
+        "eqeqeq": false,
+        "forin": true,
+        "freeze": true,
+        "immed": false,
+        "latedef": false,
+        "newcap": false,
+        "noarg": true,
+        "noempty": true,
+        "nonbsp": true,
+        "nonew": false,
+        "plusplus": false,
+        "quotmark": false,
+        "undef": true,
+        "unused": true,
+        "strict": false,
+        "maxparams": false,
+        "maxdepth": false,
+        "maxstatements": false,
+        "maxcomplexity": false,
+        "maxlen": false,
+        "varstmt": false,
+        "asi": false,
+        "boss": false,
+        "debug": false,
+        "eqnull": true,
+        "esversion": 5,
+        "moz": false,
+        "evil": false,
+        "expr": false,
+        "funcscope": false,
+        "globalstrict": false,
+        "iterator": false,
+        "lastsemic": false,
+        "laxbreak": false,
+        "laxcomma": false,
+        "loopfunc": false,
+        "multistr": false,
+        "noyield": false,
+        "notypeof": false,
+        "proto": false,
+        "scripturl": false,
+        "shadow": false,
+        "sub": false,
+        "supernew": false,
+        "validthis": false,
+        "browser": true,
+        "browserify": false,
+        "couch": false,
+        "devel": true,
+        "dojo": false,
+        "jasmine": false,
+        "jquery": true,
+        "mocha": false,
+        "mootools": false,
+        "node": false,
+        "nonstandard": true,
+        "phantom": false,
+        "prototypejs": false,
+        "qunit": false,
+        "rhino": false,
+        "shelljs": false,
+        "typed": false,
+        "worker": false,
+        "wsh": false,
+        "yui": false,
+        "globals": {
+            "google": true,
+            "select2": true,
+            "bsCustomFileInput": true,
+            "makeFullHeight": true,
+            "sameHeight": true,
+            "verge": true
+        }
+    },
+    "babel": {
+        "presets": [
+            "@babel/env"
+        ]
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": true
+    },
+    "urls": {
+        "dev": "https://maat-legal.local",
+        "stage": "https://stage.maatlegal.com",
+        "prod": "https://maatlegal.com"
+    },
+    "paths": {
+        "fonts": "./assets/fonts",
+        "pages": "./inc/pages",
+        "admin": "./inc/admin",
+        "components": "./inc/components/**",
+        "build": {
+            "styles": "./build/sass",
+            "scripts": "./build/js",
+            "images": "./build/imgs"
+        },
+        "dist": {
+            "styles": "./assets/css",
+            "scripts": "./assets/js",
+            "images": "./assets/imgs"
+        }
+    },
+    "inputFiles": {
+        "sass": {
+            "main": "./build/sass/main.scss",
+            "admin": "./inc/admin/**/build/sass/**/*.scss",
+            "pages": "./inc/pages/**/build/sass/*.scss"
+        },
+        "js": {
+            "main": "./build/js/*.js",
+            "admin": "./inc/admin/**/build/js/*.js",
+            "vendor": {
+                "bootstrap.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+                "select-2.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/select2/dist/js/select2.js",
+                "lazy-sizes.js": [
+                    "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/aspectratio/ls.aspectratio.js",
+                    "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/bgset/ls.bgset.js",
+                    "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/blur-up/ls.blur-up.js",
+                    "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/object-fit/ls.object-fit.js",
+                    "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/parent-fit/ls.parent-fit.js",
+                    "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/progressive/ls.progressive.js",
+                    "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/lazysizes.js"
+                ],
+                "file-input.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bs-custom-file-input/dist/bs-custom-file-input.js",
+                "verge.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/verge/verge.js",
+                "fancybox.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/js/jquery.fancybox.pack.js",
+                "fitty.js": "/Users/sam/Local Sites/maat-legal/app/public/wp-content/themes/maat/node_modules/fitty/dist/fitty.min.js"
+            },
+            "pages": "./inc/pages/**/build/js/*.js"
+        },
+        "images": [
+            "./**/imgs/**/*",
+            "!node_module/**/imgs/**/*",
+            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/img/**/*",
+            "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/src/img/**/*"
+        ]
+    },
+    "dependencies": {
+        "fitty": "^2.2.6"
+    }
+}

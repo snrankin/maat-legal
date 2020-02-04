@@ -1,9 +1,0 @@
-.acf-flexible-content{
-    width: 100%;
-    .layout{
-        @include make-container();
-        .acf-fc-layout-handle{
-            @include make-row();
-        }
-    }
-}

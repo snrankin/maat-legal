@@ -1,0 +1,90 @@
+{
+
+    "project": {
+        "name": "Maat Legal",
+        "slug": "maat",
+        "env": "dev"
+    },
+    "urls": {
+        "dev": "https://maat-legal.local",
+        "stage": "https://stage.maatlegal.com",
+        "prod": "https://maatlegal.com"
+    },
+    "browsers": [
+        "last 1 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead"
+    ],
+    "paths": {
+        "fonts": "./assets/fonts",
+        "pages": "./inc/pages",
+        "admin": "./inc/admin",
+        "components": "./inc/components/**",
+        "build": {
+            "styles": "./build/sass",
+            "scripts": "./build/js",
+            "images": "./build/imgs"
+        },
+        "dist": {
+            "styles": "./assets/css",
+            "scripts": "./assets/js",
+            "images": "./assets/imgs"
+        }
+    },
+    "sass": {
+        "main": "./build/sass/main.scss",
+        "admin": "./inc/admin/**/build/sass/*.scss",
+        "pages": "./inc/pages/**/build/sass/*.scss"
+    },
+    "js": {
+        "main": "./build/js/*.js",
+        "admin": "./inc/admin/**/build/js/*.js",
+        "vendor": {
+            "bootstrap.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+            "fancybox.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/js/jquery.fancybox.js",
+            "owlCarousel.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/dist/owl.carousel.js",
+            "wayPoints.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/waypoints/lib/jquery.waypoints.js",
+            "select2.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/select2/dist/js/select2.js",
+            "lazysizes.js": [
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/aspectratio/ls.aspectratio.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/bgset/ls.bgset.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/blur-up/ls.blur-up.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/object-fit/ls.object-fit.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/parent-fit/ls.parent-fit.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/plugins/progressive/ls.progressive.js",
+                "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/lazysizes/lazysizes.js"
+            ],
+            "bs-custom-file-input.js": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/bs-custom-file-input/dist/bs-custom-file-input.js"
+        },
+        "pages": "./inc/pages/**/build/js/*.js"
+    },
+    "images": [
+        "./**/imgs/**/*",
+        "!node_module/**/imgs/**/*",
+        "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/fancybox/dist/img/**/*",
+        "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/owl.carousel/src/img/**/*"
+    ],
+    "modernizr": {
+        "options": [
+            "setClasses",
+            "addTest",
+            "atRule",
+            "domPrefixes",
+            "hasEvent",
+            "html5shiv",
+            "html5printshiv",
+            "load",
+            "mq",
+            "prefixed",
+            "prefixes",
+            "prefixedCSS",
+            "setClasses",
+            "testAllProps",
+            "testProp",
+            "testStyles"
+        ],
+        "uglify": false
+    },
+    "globalNode": "/Users/sam/.nvm/versions/node/v11.8.0/lib/node_modules/"
+}
